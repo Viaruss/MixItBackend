@@ -6,5 +6,8 @@ public enum Flavor {
     FRUITY,
     CREAMY,
     BITTER,
-    HERBAL
+    HERBAL,
+    REFRESHING,
+    SPICY,
+    RICH,
 }
