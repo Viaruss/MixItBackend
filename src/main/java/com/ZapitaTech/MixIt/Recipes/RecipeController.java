@@ -2,6 +2,7 @@ package com.ZapitaTech.MixIt.Recipes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,4 +24,20 @@ public class RecipeController {
         return recipeService.getById(id);
     }
 
+    @GetMapping(path = "/getAllIngredients")
+    public List<String> getAllIngredients(){
+        List<Recipe> recipes = recipeService.getAllRecipes();
+        ArrayList<String> ingredients = new ArrayList<>();
+        for (Recipe recipe : recipes){
+            for (String ingredient : recipe.getIngredients()){
+                if (!ingredients.contains(ingredient)) ingredients.add(ingredient);
+            }
+        }
+        return ingredients.stream().sorted().toList();
+    }
+
+    @GetMapping(path = "/getAllFlavors")
+    public Flavor[] getAllFlavours(){
+        return Flavor.values();
+    }
 }
