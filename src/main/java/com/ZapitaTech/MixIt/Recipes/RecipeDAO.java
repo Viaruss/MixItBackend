@@ -4,5 +4,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface RecipeDAO extends MongoRepository<Recipe, String> {
 
-
 }
