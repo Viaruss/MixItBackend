@@ -15,21 +15,21 @@ public class RecipeController {
     }
 
     @GetMapping(path = "/all")
-    public List<Recipe> getAllRecipes(){
+    public List<Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
     @GetMapping(path = "/byId/{Id}")
-    public Recipe getById(@PathVariable("Id") String id){
+    public Recipe getById(@PathVariable("Id") String id) {
         return recipeService.getById(id);
     }
 
     @GetMapping(path = "/ingredients")
-    public List<String> getAllIngredients(){
+    public List<String> getAllIngredients() {
         List<Recipe> recipes = recipeService.getAllRecipes();
         ArrayList<String> ingredients = new ArrayList<>();
-        for (Recipe recipe : recipes){
-            for (String ingredient : recipe.getIngredients()){
+        for (Recipe recipe : recipes) {
+            for (String ingredient : recipe.getIngredients()) {
                 if (!ingredients.contains(ingredient)) ingredients.add(ingredient);
             }
         }
@@ -37,7 +37,12 @@ public class RecipeController {
     }
 
     @GetMapping(path = "/flavors")
-    public Flavor[] getAllFlavours(){
+    public Flavor[] getAllFlavours() {
         return Flavor.values();
     }
+    @GetMapping(path = "/byName/{name}")
+    public List<Recipe> getByName(@PathVariable("name") String name) {
+        return recipeService.getByName(name);
+    }
+
 }

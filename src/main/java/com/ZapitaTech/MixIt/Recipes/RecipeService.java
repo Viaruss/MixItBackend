@@ -21,4 +21,7 @@ public class RecipeService {
         Optional<Recipe> recipe =  recipeDAO.findById(id);
         return recipe.orElse(null);
     }
+    public List<Recipe> getByName(String name) {
+        return recipeDAO.findByNameContaining(name);
+    }
 }
