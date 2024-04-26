@@ -24,4 +24,7 @@ public class RecipeService {
     public List<Recipe> getByName(String name) {
         return recipeDAO.findByNameContaining(name);
     }
+    public List<Recipe> getByFlavor(String flavor) {
+        return recipeDAO.findByFlavor(flavor);
+    }
 }

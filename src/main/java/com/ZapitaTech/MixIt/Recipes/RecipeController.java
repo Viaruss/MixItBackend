@@ -45,4 +45,9 @@ public class RecipeController {
         return recipeService.getByName(name);
     }
 
+    @GetMapping(path = "/byFlavor/{flavor}")
+    public List<Recipe> getByFlavor(@PathVariable("flavor") String flavor) {
+        return recipeService.getByFlavor(flavor);
+    }
+
 }
