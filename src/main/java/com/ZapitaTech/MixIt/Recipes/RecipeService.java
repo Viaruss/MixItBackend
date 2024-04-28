@@ -22,7 +22,7 @@ public class RecipeService {
         return recipe.orElse(null);
     }
     public List<Recipe> getByName(String name) {
-        return recipeDAO.findByNameContaining(name);
+        return recipeDAO.findByNameContainingIgnoreCase(name);
     }
     public List<Recipe> getByFlavor(String flavor) {
         return recipeDAO.findByFlavor(flavor);
