@@ -50,4 +50,8 @@ public class RecipeController {
         return recipeService.getByFlavor(flavor);
     }
 
+    @GetMapping("/byIngredient")
+    public List<Recipe> handleRequest(@RequestParam("name") List<String> params) {
+        return recipeService.getByIngredients(params);
+    }
 }
