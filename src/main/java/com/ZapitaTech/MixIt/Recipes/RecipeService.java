@@ -24,7 +24,7 @@ public class RecipeService {
     public List<Recipe> getByName(String name) {
         return recipeDAO.findByNameContainingIgnoreCase(name);
     }
-    public List<Recipe> getByFlavor(String flavor) {
+    public List<Recipe> getByFlavor(Flavor flavor) {
         return recipeDAO.findByFlavor(flavor);
     }
     public List<Recipe> getByIngredients(List<String> ingredients){

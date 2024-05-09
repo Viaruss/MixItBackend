@@ -9,7 +9,7 @@ public interface RecipeDAO extends MongoRepository<Recipe, String> {
 
     List<Recipe> findByNameContainingIgnoreCase(String name);
 
-    List<Recipe> findByFlavor(String flavor);
+    List<Recipe> findByFlavor(Flavor flavor);
     @Query("{'ingredients': {$all: ?0}}")
     List<Recipe> findByIngredients(List<String> ingredients);
 }
