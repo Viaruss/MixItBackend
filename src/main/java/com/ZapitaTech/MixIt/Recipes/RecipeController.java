@@ -26,14 +26,7 @@ public class RecipeController {
 
     @GetMapping(path = "/ingredients")
     public List<String> getAllIngredients() {
-        List<Recipe> recipes = recipeService.getAllRecipes();
-        ArrayList<String> ingredients = new ArrayList<>();
-        for (Recipe recipe : recipes) {
-            for (String ingredient : recipe.getIngredients()) {
-                if (!ingredients.contains(ingredient)) ingredients.add(ingredient);
-            }
-        }
-        return ingredients.stream().sorted().toList();
+        return getUniqueIngredients(recipeService.getAllRecipes());
     }
 
     @GetMapping(path = "/flavors")
@@ -53,5 +46,20 @@ public class RecipeController {
     @GetMapping("/byIngredient")
     public List<Recipe> handleRequest(@RequestParam("name") List<String> params) {
         return recipeService.getByIngredients(params);
+    }
+
+    @GetMapping(path = "/ingredientCombination")
+    public List<String> getIngredientCombination(@RequestParam("name") List<String> selectedIngredients) {
+        return getUniqueIngredients(recipeService.getByIngredients(selectedIngredients));
+    }
+
+    private List<String> getUniqueIngredients(List<Recipe> validRecipes) {
+        ArrayList<String> ingredients = new ArrayList<>();
+        for (Recipe recipe : validRecipes) {
+            for (String ingredient : recipe.getIngredients()) {
+                if (!ingredients.contains(ingredient)) ingredients.add(ingredient);
+            }
+        }
+        return ingredients.stream().sorted().toList();
     }
 }
