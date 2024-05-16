@@ -1,4 +1,5 @@
 # MixItBackend
+## WIP
 
 Backend of the **MixIt!** web app - a collaborative project to create a user-friendly place to explore and try new drink recipes or rediscover the ones You already know  
 
